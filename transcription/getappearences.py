@@ -21,7 +21,7 @@ for index, row in df.iterrows():
     # Calcular el tiempo medio
     middle_time = (start_time + end_time) / 2
     # Agregar el tiempo de aparición (en este caso el tiempo de medio)
-    speaker_times[speaker].append(middle_time)
+    speaker_times[speaker].append([start_time, end_time])
 
 
 # Crear la carpeta para guardar los tiempos de aparición
