@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.cursor-zoom-in {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="8" cy="8" r="7" fill="none" stroke="black" stroke-width="2"/><line x1="13" y1="13" x2="18" y2="18" stroke="black" stroke-width="2"/></svg>') 10 10, auto;
+}
+
+.tooltip {
+  background-color: white !important;
+  color: black !important;
+  border: 1px solid #ddd !important;
+  padding: 0 !important;
+  opacity: 1 !important;
+  z-index: 50;
+
+}
