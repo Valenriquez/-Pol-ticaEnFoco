@@ -32,13 +32,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/resources" className="text-lg font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300 ease-in-out transform hover:scale-110">
                 Recursos
               </Link>
-              <Link href="/about" className="text-lg font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300 ease-in-out transform hover:scale-110">
-                Acerca de
+              <Link href="/analysis" className="text-lg font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300 ease-in-out transform hover:scale-110">
+                Analizador 
               </Link>
             </div>
             <Link href="/news" className="text-lg font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300 ease-in-out transform hover:scale-110">
               Noticias
             </Link>
+            
           </nav>
         </header>
         <main className="mt-4">

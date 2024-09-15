@@ -14,7 +14,12 @@ export async function POST(req: Request) {
       },
       body: JSON.stringify({
         model: process.env.OLLAMA_MODEL || 'codegemma',
-        prompt: `De acuerdo a la pagina "https://www.monterrey.gob.mx/noticia/graduan-adultos-de-talleres-productivos", y el siguiente texto: ${text} explica como afecta a la ciudadanía de Monterrey`,
+        prompt: `Los resultados de la búsqueda corresponden a la publicación del Decreto por el que se crea el Instituto Federal de Transparencia y Acceso a la Información Pública con personalidad jurídica y fondos propios.
+   - Este Instituto se crea para cumplir con las responsabilidades señaladas en la Ley Federal de Transparencia y Acceso a la Información Pública Resumen
+   - El Decreto incluye disposiciones relacionadas con riesgos laborales para los empleados y la evaluación de un programa piloto por parte del Instituto Mexicano del Seguro Social [Página no. 7 Página núm. 2]
+   - Existen plazos para que los empleadores realicen los cambios necesarios en materia de registro laboral ante el Instituto Mexicano del Seguro Social [Página no. 6]
+   - El Instituto está obligado a presentar un informe preliminar al Poder Legislativo luego de 18 meses de implementación del programa piloto [Página no. 2]
+   - El Decreto menciona la importancia de la supervisión, inspección, salarios mínimos por oficio y trámites administrativos para garantizar certidumbre y eficacia  , y la siguiente noticia: ${text} explica como afecta dicha información al ciudadano`,
         stream: false, // Add this line to request a non-streaming response
       }),
     });
