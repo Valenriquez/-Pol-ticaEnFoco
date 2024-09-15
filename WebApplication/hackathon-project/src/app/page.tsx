@@ -3,13 +3,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
+type ChecklistResults = Record<number, number>;
+
 export default function PoliticaEnFoco() {
   const [isVisible1, setIsVisible1] = useState(false);
   const [isVisible2, setIsVisible2] = useState(false);
   const [countdown, setCountdown] = useState('');
-  const imageRef1 = useRef(null);
-  const imageRef2 = useRef(null);
-  const [checklistResults, setChecklistResults] = useState({});
+  const imageRef1 = useRef<HTMLDivElement | null>(null);
+  const imageRef2 = useRef<HTMLDivElement | null>(null);
+  const [checklistResults, setChecklistResults] = useState<ChecklistResults>({});
   const [interpretation, setInterpretation] = useState('');
 
   useEffect(() => {
@@ -42,8 +44,7 @@ export default function PoliticaEnFoco() {
     const targetDate = new Date('2024-09-30T00:00:00');
     const interval = setInterval(() => {
       const now = new Date();
-      const difference = targetDate - now;
-
+      const difference = targetDate.getTime() - now.getTime();
       if (difference <= 0) {
         clearInterval(interval);
         setCountdown('¡El evento ha comenzado!');
@@ -60,13 +61,13 @@ export default function PoliticaEnFoco() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleCheckboxChange = (questionIndex, optionIndex) => {
+  const handleCheckboxChange = (questionIndex: number, optionIndex: number) => {
     setChecklistResults(prev => ({
       ...prev,
       [questionIndex]: optionIndex
     }));
   };
-
+  
   const generateResults = () => {
     const checkedCount = Object.values(checklistResults).filter(value => value === 0).length;
     let result = '';
@@ -96,18 +97,17 @@ export default function PoliticaEnFoco() {
         </div>
 
         <div className="flex flex-col space-y-6 p-4 max-w-3xl mx-auto">
-        <Link href="/analysis" legacyBehavior>
-        <a>
-          <button className="flex items-center justify-start w-full bg-black text-white px-12 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 shadow-lg">
-            <svg className="w-8 h-8 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="text-xl font-semibold ml-6">Análisis de Noticias</span>
-          </button>
-          </a>
+          <Link href="/analysis" legacyBehavior>
+            <a>
+              <button className="flex items-center justify-start w-full bg-black text-white px-12 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 shadow-lg">
+                <svg className="w-8 h-8 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-xl font-semibold ml-6">Análisis de Noticias</span>
+              </button>
+            </a>
           </Link>
-
           
           <Link href="https://www.hcnl.gob.mx/organizacion/distritos.php" legacyBehavior>
             <a className="flex items-center justify-start w-full bg-black text-white px-12 py-4 rounded-full hover:bg-gray-800 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 shadow-lg">
